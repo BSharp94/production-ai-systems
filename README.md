@@ -1,6 +1,6 @@
 # Production AI Systems
 
-This repository provides resources and examples for designing and building production-ready AI systems. It covers current best practices, tools, and frameworks for developing and deploying AI applications at scale.
+The repository contains overviews, design documents, and code examples for advanced topics relating to Production AI Systems and ML Engineering. The goal is to provide practical guidance towards developing, deploying, and mainaining AI systems in production environments.
 
 ### What You Will Find Here:
 
@@ -17,49 +17,38 @@ This repository provides resources and examples for designing and building produ
 - **Exhaustive Tutorials**: While the resources provided will be comprehensive, they are not intended to be step-by-step tutorials for every possible scenario. Users are encouraged to adapt the provided materials to their specific use cases.
 
 
-### Running Example: Company Q
-
-In these guidelines, we use a fictional software company, "Company Q", as a running example to illustrate how we might apply certain topics. Company Q is a mid-sized software firm that is in the logistics domain. They are looking to integrate AI capabilities into their existing applications to improve efficiency and provide better services to their customers.
-
-Company Q's existing products include a web-based applications for enterprises to order, track, and manage shipments from other sellers. Their customers range from small businesses to large corporations, and they handle a variety of shipment types, including perishable goods, electronics, and heavy machinery. They would like to leverage AI to optimize route planning, predict delivery times, and enhance customer support through chatbots.
-
 ## Topics
 
 The repository is organized into the following main topics:
 
-1. **Know your Data**
+1. **Model Versioning**
    
-    1.1 Application Data vs AI Data
+    1.1 MLFlow, DVC, and other tools
 
-    - Understanding the differences between application data and AI data, and how to manage both effectively.
-    
-    - Storage considerations for different types of data.
+    1.2 Model Lifecycle Management
 
-    - Data pipelines for AI applications.
+    1.3 Multi-tier Model Versioning
 
-    1.2 Data Documentation
+    1.4 Shadow Models
 
-    - Tools and methodologies for documenting datasets and data pipelines.
+2. **Online Learning**
 
-    - Best practives for maintaining data documentation.
+    2.1 Concepts and Use Cases
 
-2. **Model Training Lifecycles**
+    2.2 Model Promotion Strategies
 
-    TBD
+    2.3 Automated Retraining Pipelines and Tools
 
-3. **Model Hosting Lifecycles**
-    
-    TBD
+    2.4 Monitoring and Alerting for Online Learning Systems
 
-4. **Feature Stores**
+    2.5 Metric Gatekeeping and Error Detection
 
-    TBD
+3. **Inference Routing**
 
-5. **Model Observability**
+    3.1 Multi-Model Endpoints
 
-    TBD
+    3.2 Canary Deployments for Models
 
-6. **Model Explainability**
+    3.2 Cost Optimization Strategies
 
-    TBD
-
+    3.3 Microbatching vs Real-Time Inference

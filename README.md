@@ -27,17 +27,17 @@ The repository is organized into the following main topics:
 
     1.2 Model Lifecycle Management
 
-    1.3 Multi-tier Model Versioning
+    1.3 Shadow Models
 
-    1.4 Shadow Models
+    1.4 Canary Models
 
 2. **Online Learning**
 
     2.1 Concepts and Use Cases
 
-    2.2 Model Promotion Strategies
-
-    2.3 Automated Retraining Pipelines and Tools
+    2.2 Automated Retraining Pipelines and Tools
+    
+    2.3 Model Promotion Strategies
 
     2.4 Monitoring and Alerting for Online Learning Systems
 

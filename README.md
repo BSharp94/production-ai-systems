@@ -41,13 +41,9 @@ The repository is organized into the following main topics:
 
     2.4 Monitoring and Alerting for Online Learning Systems
 
-    2.5 Metric Gatekeeping and Error Detection
-
 3. **Inference Routing**
 
     3.1 Multi-Model Endpoints
-
-    3.2 Canary Deployments for Models
 
     3.2 Cost Optimization Strategies
 

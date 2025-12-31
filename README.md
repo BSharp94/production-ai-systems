@@ -45,6 +45,15 @@ The repository is organized into the following main topics:
 
     3.1 Multi-Model Endpoints
 
-    3.2 Cost Optimization Strategies
+    3.2 Inference for Inference Routing
 
-    3.3 Microbatching vs Real-Time Inference
+4. **Case Study 1: Personalized Recommendation System**
+
+    4.1 Problem Overview and Requirements
+
+    4.2 Milestone 1: AI Data Setup for Development and Research
+
+    4.3 Milestone 2: Initial Model Development, Hosting, and Deployment
+
+    4.4 Milestone 3: Develop Monitoring and Alerting Systems for Model Performance
+

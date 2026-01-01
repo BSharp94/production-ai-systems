@@ -54,26 +54,14 @@ For the data to be migrated to the new PostgreSQL database, we will follow these
 
 3. **ETL Process:** Develop an ETL (Extract, Transform, Load) process to transform the raw data in the staging tables into the snowflake schema format. This process will handle data cleaning, deduplication, and transformation to ensure data quality.
 
-### Data Versioning
+### Duplicated Database for Model Training
 
-To ensure reproducibility and traceability of the dataset, we will implement a data versioning strategy using DVC (Data Version Control). The following steps outline the data versioning process:
+We need to be careful about how we version our training and testing datasets. Since the analytics database may be used to generate inference in production, we need a copy of the data that is consistent with what the production system would see at any given point in time.
 
-1. **Dataset Repository:** Create a DVC repository to manage the different version of the dataset. The Repository will have the following components:
-    - DVC files storing the raw data extracted from the PostgresSQL database. These files may be stored as CSV or Parquet files.
-    - Dockerfile and scripts to initialize and update local or cloud-hosted copies of the PostgreSQL database for training and evaluation.
-    - SQL scripts and libraries for common data preprocessing tasks.
+To achieve this, we will create another kafka consumer that reads from the same topics as the main consumer but writes the data to a separate PostgreSQL database instance specifically for model training and evaluation. This database will be versioned using DVC to ensure that we can track changes to the dataset over time.
 
-2. **Update Process:** At each time interval (e.g., daily, weekly), the ETL process will be run to extract the latest data from the PostgreSQL database and update the dataset in the DVC repository. A new DVC version will be created to capture the changes.
+In order to implement data versioning, we will pull a snapshot of the training dataset (subset of the full dataset) at regular intervals (e.g., daily or weekly) and store it in DVC. Each snapshot will be tagged with a version identifier, allowing us to easily retrieve and reproduce specific versions of the dataset for model training and evaluation.
 
-3. **Global Statistics:** In addition to versioning the raw data, we will also include some global statistics about the extracted dataset. These statistics will help us to guage both the quality of the data and its evolution over time. These may include:
-    - Total number of "Positive" interactions (purchases, wishlist additions).
-    - Total number of "Negative" interactions (product views without purchase).
-    - Distribution of interactions over time (e.g., number of interactions per day/week).
-    - Frequency of interactions per user and per product. These statistics will help in understanding the dataset and its evolution over time.
+A Repository will be created to manage the DVC dataset versions, along with scripts to automate the snapshotting process and ensure that the dataset remains up-to-date with the latest data from the Kafka stream.
 
-4. **Reproducibility:** When training or evaluating models, data scientists can checkout specific versions of the dataset from the DVC repository to ensure that they are using the exact same data used in previous experiments. This will help in reproducing results and comparing model performance across different dataset versions.
-
-
-
-
-
+Additionally the repository will include an interface for querying specific versions of the dataset, making it easy for data scientists to access the data they need for model development and experimentation.
